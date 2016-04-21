@@ -57,19 +57,23 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-" Plugin 'scrooloose/syntastic'
-Plugin 'itchyny/lightline.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ntpeters/vim-airline-colornum'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-signify'
+Plugin 'jmcantrell/vim-virtualenv'
+"
 Plugin 'kana/vim-fakeclip'
 Plugin 'Shougo/unite.vim'
 Plugin 'ujihisa/unite-colorscheme'
-Plugin 'tpope/vim-obsession'
-Plugin 'vim-scripts/renamer.vim'
 Plugin 'othree/eregex.vim'
+Plugin 'tpope/vim-abolish'
 if has('lua')
   Plugin 'Shougo/neocomplete.vim'
 end
-
-" filetypes
+"
 Plugin 'groenewege/vim-less'
 Plugin 'pangloss/vim-javascript'
 Plugin 'rcmdnk/vim-markdown'
@@ -94,39 +98,30 @@ au BufNewFile,BufRead *.as              set filetype=javascript
 au BufNewFile,BufRead *.jade            set filetype=jade
 au BufNewFile,BufRead *.md              set filetype=markdown
 
-" buftabs
-let g:buftabs_only_basename=1
-let g:buftabs_in_statusline=1
-let g:buftabs_active_highlight_group="Visual"
-set statusline=%=\ [%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
-set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='dark'
 
 " syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 3
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_javascript_eslint_generic = 1
-let g:syntastic_javascript_eslint_exec = 'xo'
-let g:syntastic_javascript_eslint_args = '--compact'
-"let g:syntastic_javascript_checkers = ['eslint']
-"
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_loc_list_height = 3
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_javascript_eslint_generic = 1
+"let g:syntastic_javascript_eslint_exec = 'xo'
+"let g:syntastic_javascript_eslint_args = '--compact'
+""let g:syntastic_javascript_checkers = ['eslint']
+
 " unite
 nnoremap <silent> ;; :<C-u>Unite buffer -direction=botright -auto-resize -toggle<CR>
 set list
 set listchars=tab:^\ ,trail:~
 
-" markdown
-let g:vim_markdown_folding_disabled=1
-" json
-let g:vim_json_syntax_conceal = 0
-
-" eregex
-nnoremap <leader>/ :call eregex#toggle()<CR> 
-
 "
+let g:vim_markdown_folding_disabled=1
+let g:vim_json_syntax_conceal = 0
+nnoremap <leader>/ :call eregex#toggle()<CR> 
 set diffopt+=vertical
