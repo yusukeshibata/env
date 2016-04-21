@@ -38,6 +38,10 @@ colorscheme delek
 highlight SpecialKey ctermfg=Black
 highlight CursorLine none
 highlight CursorLineNr ctermfg=Black ctermbg=Brown
+
+let &colorcolumn=join(range(81,999),",")
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+
 " leader
 let mapleader = ","
 noremap <leader><TAB> :bnext<CR>
