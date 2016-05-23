@@ -46,23 +46,16 @@ zstyle ':prezto:module:tmux:auto-start' local 'no'
 umask 022
 # env
 export EDITOR="vi"
-alias vi="nvim"
+alias vi="vim"
+alias vim="nvim"
 alias a="tmux attach -d -t"
 alias n="tmux new -s"
 alias feature="git flow feature"
 alias hotfix="git flow hotfix"
 alias release="git flow release"
 
-# brew update
-export PATH="$HOME/.nodebrew/current/bin:$PATH"
-export HOMEBREW_BREWFILE=~/.brewfile
-if [ -f $(brew --prefix)/etc/brew-wrap ];then
-  source $(brew --prefix)/etc/brew-wrap
-fi
-
+export EDITOR="nvim"
 export PATH="/usr/local/opt/android-sdk/platform-tools:$PATH"
 export ANDROID_HOME=/usr/local/opt/android-sdk
-
-#
 export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export XDG_CONFIG_HOME=$HOME/.config
