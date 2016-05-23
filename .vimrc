@@ -40,10 +40,6 @@ set ttimeout
 set ttimeoutlen=0
 let loaded_matchparen = 1
 
-"if has('nvim')
-"	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"endif
-
 " leader
 let mapleader = ","
 noremap <leader><TAB> :bnext<CR>
@@ -52,6 +48,7 @@ nnoremap <ESC><ESC> :noh<CR>
 
 " dein
 if has('nvim')
+"	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 	let s:dein_dir = expand('~/.cache/dein')
 	let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 	if !isdirectory(s:dein_repo_dir)
@@ -63,14 +60,11 @@ if has('nvim')
 	call dein#add('scrooloose/syntastic')
 	call dein#add('vim-airline/vim-airline')
 	call dein#add('vim-airline/vim-airline-themes')
-	"call dein#add('ntpeters/vim-airline-colornum')
 	call dein#add('airblade/vim-gitgutter')
 	call dein#add('mhinz/vim-signify')
 	call dein#add('jmcantrell/vim-virtualenv')
-	call dein#add('kana/vim-fakeclip')
 	call dein#add('Shougo/unite.vim')
 	call dein#add('ujihisa/unite-colorscheme')
-	"call dein#add('othree/eregex.vim')
 	call dein#add('tpope/vim-abolish')
 	call dein#add('groenewege/vim-less')
 	call dein#add('pangloss/vim-javascript')
@@ -79,7 +73,6 @@ if has('nvim')
 	call dein#add('elzr/vim-json')
 	call dein#add('Shougo/deoplete.nvim')
 	call dein#add('flazz/vim-colorschemes')
-	"call dein#add('guns/xterm-color-table.vim')
 	call dein#end()
 	
 	if dein#check_install()
@@ -110,7 +103,3 @@ set diffopt+=vertical
 
 "
 let g:deoplete#enable_at_startup = 1
-
-"colorscheme solarized
-"highlight SpecialKey guifg=black ctermfg=black
-"highlight CursorLine ctermbg=gray guibg=gray
