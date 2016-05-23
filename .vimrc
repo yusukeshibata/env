@@ -36,6 +36,8 @@ set softtabstop=2
 set noexpandtab
 set backspace=indent,eol,start
 set clipboard=unnamed
+set ttimeout
+set ttimeoutlen=0
 let loaded_matchparen = 1
 colorscheme delek
 highlight SpecialKey ctermfg=Black
