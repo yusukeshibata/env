@@ -103,3 +103,13 @@ set diffopt+=vertical
 
 "
 let g:deoplete#enable_at_startup = 1
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+endfunction
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"
+highlight SpecialKey ctermfg=232 guifg=232
+highlight CursorLineNr ctermbg=white ctermfg=Black cterm=none
+highlight Cursor ctermfg=none cterm=none guifg=none gui=none
+highlight CursorLine ctermfg=none cterm=none guifg=none gui=none

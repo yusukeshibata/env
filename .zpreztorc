@@ -54,7 +54,7 @@ alias feature="git flow feature"
 alias hotfix="git flow hotfix"
 alias release="git flow release"
 
-#export EDITOR="nvim"
+export EDITOR="nvim"
 export PATH="/usr/local/opt/android-sdk/platform-tools:$PATH"
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export PATH=$HOME/.nodebrew/current/bin:$PATH
