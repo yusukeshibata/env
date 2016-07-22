@@ -53,6 +53,8 @@ alias n="tmux new -s"
 alias feature="git flow feature"
 alias hotfix="git flow hotfix"
 alias release="git flow release"
+#alias done="ghi comment --close -m done"
+#alias fixed="ghi comment --close -m fixed"
 
 export EDITOR="nvim"
 export PATH="/usr/local/opt/android-sdk/platform-tools:$PATH"
@@ -62,3 +64,4 @@ export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/s
 export XDG_CONFIG_HOME=$HOME/.config
 #export NVIM_TUI_ENABLE_TRUE_COLOR=1
 #export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+export PATH=$PATH:/usr/local/m-cli

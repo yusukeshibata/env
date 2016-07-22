@@ -73,6 +73,8 @@ if has('nvim')
 	call dein#add('elzr/vim-json')
 	call dein#add('Shougo/deoplete.nvim')
 	call dein#add('flazz/vim-colorschemes')
+	call dein#add('othree/eregex.vim')
+	call dein#add('thinca/vim-localrc')
 	call dein#end()
 	
 	if dein#check_install()
