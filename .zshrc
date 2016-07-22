@@ -1,24 +1,20 @@
+if [[ ! -d ~/.zplug ]]; then
+  git clone https://github.com/zplug/zplug ~/.zplug
+  source ~/.zplug/init.zsh && zplug update --self
+fi
+source ~/.zplug/init.zsh
+
+zplug "sorin-ionescu/prezto",\
+	hook-build:"ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto ~/.zprezto && ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto/runcoms/zpreztorc ~/.zpreztorc",\
+	use:"modules/{git,environment,terminal,editor,spectrum,prompt,tmux,command-not-found,osx,homebrew,node,ssh,directory,history,completion}/init.zsh"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug check || zplug install
+zplug load
+
+source ~/.zprezto/init.zsh
 zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:load' zmodule 'attr' 'stat'
 zstyle ':prezto:load' zfunction 'zargs' 'zmv'
-zstyle ':prezto:load' pmodule \
-  'environment' \
-  'terminal' \
-  'editor' \
-  'history' \
-  'directory' \
-  'spectrum' \
-  'utility' \
-  'completion' \
-  'prompt' \
-  'git' \
-  'tmux' \
-  'command-not-found' \
-  'osx' \
-  'homebrew' \
-  'node' \
-  'ssh'
-
 zstyle ':prezto:module:editor' key-bindings 'emacs'
 zstyle ':prezto:module:editor' dot-expansion 'yes'
 zstyle ':prezto:module:git:status:ignore' submodules 'all'
@@ -43,9 +39,6 @@ zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 zstyle ':prezto:module:tmux:auto-start' local 'no'
 
 #
-umask 022
-# env
-export EDITOR="vi"
 alias vi="vim"
 alias vim="nvim"
 alias a="tmux attach -d -t"
@@ -53,15 +46,10 @@ alias n="tmux new -s"
 alias feature="git flow feature"
 alias hotfix="git flow hotfix"
 alias release="git flow release"
-#alias done="ghi comment --close -m done"
-#alias fixed="ghi comment --close -m fixed"
+alias fixed="ghi comment --close -m fixed"
 
 export EDITOR="nvim"
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="/usr/local/opt/android-sdk/platform-tools:$PATH"
 export ANDROID_HOME=/usr/local/opt/android-sdk
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-export XDG_CONFIG_HOME=$HOME/.config
-#export NVIM_TUI_ENABLE_TRUE_COLOR=1
-#export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-export PATH=$PATH:/usr/local/m-cli
