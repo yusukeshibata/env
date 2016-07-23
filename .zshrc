@@ -23,6 +23,12 @@ alias feature="git flow feature"
 alias hotfix="git flow hotfix"
 alias release="git flow release"
 alias fixed="ghi comment --close -m fixed"
+alias gcm='git commit -m'
+alias gws='git status'
+alias gwd='git diff'
+alias gs='git stash'
+alias gsp='git stash pop'
+alias gp='git push'
 
 export EDITOR="nvim"
 export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
