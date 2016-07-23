@@ -4,16 +4,21 @@ if [[ ! -d ~/.zplug ]]; then
 fi
 source ~/.zplug/init.zsh
 
+zplug "zsh-users/zsh-history-substring-search"
+zplug "tj/n", hook-build:"make install"
+zplug "b4b4r07/enhancd", use:enhancd.sh
+zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "sorin-ionescu/prezto",\
 	hook-build:"ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto ~/.zprezto && ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto/runcoms/zpreztorc ~/.zpreztorc",\
-	use:init.zsh
+	use:init.zsh,\
+	hook-load:'prompt nicoulaj'
 zplug check || zplug install
 zplug load
 
 alias vi="vim"
 alias vim="nvim"
-alias a="tmux attach -d -t"
-alias n="tmux new -s"
+alias attach="tmux attach -d -t"
+alias new="tmux new -s"
 alias feature="git flow feature"
 alias hotfix="git flow hotfix"
 alias release="git flow release"
