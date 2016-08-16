@@ -6,7 +6,6 @@ source ~/.zplug/init.zsh
 
 zplug "zsh-users/zsh-history-substring-search"
 zplug "tj/n", hook-build:"make install"
-zplug "b4b4r07/enhancd", use:enhancd.sh
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "sorin-ionescu/prezto",\
 	hook-build:"ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto ~/.zprezto && ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto/runcoms/zpreztorc ~/.zpreztorc",\
@@ -17,12 +16,13 @@ zplug load
 
 alias vi="vim"
 alias vim="nvim"
-alias attach="tmux attach -d -t"
+alias a="tmux attach -d -t"
 alias new="tmux new -s"
 alias feature="git flow feature"
 alias hotfix="git flow hotfix"
 alias release="git flow release"
-alias fixed="ghi comment --close -m fixed"
+alias gfixed="ghi comment --close -m fixed"
+alias gdone="ghi comment --close -m done"
 alias gcm='git commit -m'
 alias gws='git status'
 alias gwd='git diff'
