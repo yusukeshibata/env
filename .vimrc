@@ -74,7 +74,7 @@ if has('nvim')
 	call dein#add('Shougo/deoplete.nvim')
 	call dein#add('flazz/vim-colorschemes')
 	call dein#add('othree/eregex.vim')
-	call dein#add('thinca/vim-localrc')
+	call dein#add('embear/vim-localvimrc')
 	call dein#end()
 	
 	if dein#check_install()
@@ -115,3 +115,5 @@ highlight SpecialKey ctermfg=232 guifg=232
 highlight CursorLineNr ctermbg=white ctermfg=Black cterm=none
 highlight Cursor ctermfg=none cterm=none guifg=none gui=none
 highlight CursorLine ctermfg=none cterm=none guifg=none gui=none
+
+let g:localvimrc_ask=0
