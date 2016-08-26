@@ -74,7 +74,7 @@ if has('nvim')
 	call dein#add('Shougo/deoplete.nvim')
 	call dein#add('flazz/vim-colorschemes')
 	call dein#add('othree/eregex.vim')
-	call dein#add('embear/vim-localvimrc')
+	call dein#add('editorconfig/editorconfig-vim')
 	call dein#end()
 	
 	if dein#check_install()
