@@ -41,3 +41,4 @@ export PATH="$HOME/.yarn/bin:$PATH"
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 bindkey -e
+export LANG=en_US.UTF-8
