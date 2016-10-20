@@ -14,7 +14,6 @@ if ! zgen saved; then
   zgen prezto fasd
   zgen prezto directory
   zgen prezto completion
-  zgen prezto zsh-history-substring-search
   zgen prezto history
   zgen prezto terminal
   zgen prezto command-not-found
@@ -48,5 +47,3 @@ export PATH="$HOME/.yarn/bin:$PATH"
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 bindkey -e
-
-export GHI_TOKEN="d9f0d2731c6f427d2c0f63708825cd5e1a253eaa"
