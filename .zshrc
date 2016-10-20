@@ -1,21 +1,30 @@
-if [[ ! -d ~/.zplug ]]; then
-  git clone https://github.com/zplug/zplug ~/.zplug
-  source ~/.zplug/init.zsh && zplug update --self
+if [[ ! -d ~/.zgen ]]; then
+  git clone https://github.com/tarjoilija/zgen.git .zgen
 fi
-source ~/.zplug/init.zsh
-
-zplug "zsh-users/zsh-history-substring-search"
-zplug "tj/n", hook-build:"make install"
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
-zplug "sorin-ionescu/prezto",\
-	hook-build:"ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto ~/.zprezto && ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto/runcoms/zpreztorc ~/.zpreztorc",\
-	use:init.zsh,\
-	hook-load:'prompt nicoulaj'
-zplug check || zplug install
-zplug load
+source "${HOME}/.zgen/zgen.zsh"
+if ! zgen saved; then
+  zgen prezto
+  zgen prezto git
+  zgen prezto environment
+  zgen prezto tmux
+  zgen prezto ssh
+  zgen prezto utility
+  zgen prezto spectrum
+  zgen prezto helper
+  zgen prezto fasd
+  zgen prezto directory
+  zgen prezto completion
+  zgen prezto zsh-history-substring-search
+  zgen prezto history
+  zgen prezto terminal
+  zgen prezto command-not-found
+  zgen prezto syntax-highlighting
+  zgen prezto prompt theme 'steeef'
+  zgen save
+fi
 
 alias vi="vim"
-alias vim="nvim"
+alias vim="vim"
 alias a="tmux attach -d -t"
 alias new="tmux new -s"
 alias feature="git flow feature"
@@ -30,8 +39,14 @@ alias gs='git stash'
 alias gsp='git stash pop'
 alias gp='git push'
 
-export EDITOR="nvim"
+export EDITOR="vi"
 export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="/usr/local/opt/android-sdk/platform-tools:$PATH"
 export ANDROID_HOME=/usr/local/opt/android-sdk
+
+export PATH="$HOME/.yarn/bin:$PATH"
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+bindkey -e
+
+export GHI_TOKEN="d9f0d2731c6f427d2c0f63708825cd5e1a253eaa"
