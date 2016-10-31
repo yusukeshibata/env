@@ -127,3 +127,5 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 let g:jsx_ext_required = 0
+
+colorscheme deepsea
