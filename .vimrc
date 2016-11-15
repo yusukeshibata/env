@@ -86,6 +86,9 @@ function InstallVundle()
   if ! executable( 'git' )
     echohl ErrorMsg | echomsg 'Git is not available.' | echohl None | return 0
   endif
+  if isdirectory( path )
+    return 1
+  endif
   if ! isdirectory( path )
     silent! if ! mkdir( path, 'p' )
       echohl ErrorMsg | echomsg 'Cannot create directory (may be a regular file): ' . path | echohl None | return 0
@@ -96,8 +99,10 @@ function InstallVundle()
     echohl ErrorMsg | echomsg 'Cannot clone ' . vundle_repo . ' (' . path . ' may be not empty)' | echohl None | return 0
   endif
   echo 'Vundle installed. Please restart vim and run :PluginInstall'
+  PluginInstall
   return 1
 endfunction
+InstallVundle
 
 filetype plugin indent on
 
