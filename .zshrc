@@ -43,7 +43,7 @@ export PATH="$HOME/.linuxbrew/bin:$PATH"
 bindkey -e
 export LANG=en_US.UTF-8
 
-export PATH="/home/shibata/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#export PATH="/home/shibata/.pyenv/bin:$PATH"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
 
