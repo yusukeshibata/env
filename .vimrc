@@ -71,6 +71,7 @@ if exists( '*vundle#rc' )
   Plugin 'othree/eregex.vim'
   Plugin 'editorconfig/editorconfig-vim'
   Plugin 'shougo/neocomplcache.vim'
+  Plugin 'ahw/vim-hooks.git'
 
 endif
 
@@ -132,5 +133,6 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 let g:jsx_ext_required = 0
+let g:vimhooks_async = 1
 
 colorscheme deepsea
