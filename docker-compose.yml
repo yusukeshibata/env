@@ -14,4 +14,4 @@ dev:
     - "30000:30000"
     - "2222:22"
   volumes:
-    - ./dev:/home/shibata/dev
+    - ./proj:/home/shibata/proj

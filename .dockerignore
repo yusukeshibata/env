@@ -1,0 +1,5 @@
+*/
+!.ssh/
+!.vimrc
+!.zshrc
+!.tmux.conf

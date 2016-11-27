@@ -55,7 +55,10 @@ ADD .ssh/config .ssh/config
 ADD .vimrc .vimrc
 ADD .zshrc .zshrc
 ADD .tmux.conf .tmux.conf
-RUN chmod go-rw -R .ssh
+USER root
+RUN chmod 600 -R .ssh/*
+RUN chmod 700 .ssh
+RUN chown shibata:shibata -R .
 
 # time
 USER root
@@ -80,8 +83,8 @@ RUN apt-get install -y yarn
 # node
 USER shibata
 RUN curl -L git.io/nodebrew | perl - setup
-RUN .nodebrew/current/bin/nodebrew install-binary v6.9.1
-RUN .nodebrew/current/bin/nodebrew use v6.9.1
+RUN .nodebrew/current/bin/nodebrew install-binary v5.12.0
+RUN .nodebrew/current/bin/nodebrew use v5.12.0
 
 # mongodb
 USER root
@@ -89,9 +92,6 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
 RUN echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
 RUN apt-get update -y
 RUN apt-get install -y mongodb-org
-ADD mongodb.service /etc/systemd/system/mongodb.service
-#RUN systemctl start mongodb
-#RUN systemctl enable mongodb
 
 # ssh
 USER root
