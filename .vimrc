@@ -64,7 +64,8 @@ if exists( '*vundle#rc' )
   Plugin 'groenewege/vim-less'
   Plugin 'pangloss/vim-javascript'
   Plugin 'mxw/vim-jsx'
-  Plugin 'rcmdnk/vim-markdown'
+  Plugin 'godlygeek/tabular'
+  Plugin 'plasticboy/vim-markdown'
   Plugin 'digitaltoad/vim-pug'
   Plugin 'elzr/vim-json'
   Plugin 'flazz/vim-colorschemes'
@@ -114,8 +115,10 @@ let g:airline_theme='dark'
 
 " unite
 nnoremap <silent> ;; :<C-u>Unite buffer -direction=botright -auto-resize -toggle<CR>
-set list
-set listchars=tab:^\ ,trail:~
+
+" hidden chars
+" set list
+" set listchars=tab:^\ ,trail:~
 
 "
 nnoremap <leader>/ :call eregex#toggle()<CR>
@@ -134,5 +137,7 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 let g:jsx_ext_required = 0
 let g:vimhooks_async = 1
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_fenced_languages = ['javascript=js']
 
 colorscheme deepsea

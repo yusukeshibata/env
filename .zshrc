@@ -23,7 +23,7 @@ if ! zgen saved; then
 fi
 
 alias vi="vim"
-alias vim="vim"
+alias vim="nvim"
 alias a="tmux attach -d -t"
 alias new="tmux new -s"
 alias feature="git flow feature"
