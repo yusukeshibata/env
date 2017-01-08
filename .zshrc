@@ -42,3 +42,8 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 bindkey -e
 export LANG=en_US.UTF-8
+
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+  eval `ssh-agent -s`
+fi
+ssh-add .ssh/id_rsa
