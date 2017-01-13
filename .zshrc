@@ -46,4 +46,4 @@ export LANG=en_US.UTF-8
 if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s`
 fi
-ssh-add "$HOME/.ssh/id_rsa"
+ssh-add "$HOME/.ssh/id_rsa" > /dev/null 2>&1
