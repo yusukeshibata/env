@@ -36,6 +36,7 @@ set backspace=indent,eol,start
 "set clipboard=unnamed
 set ttimeout
 set ttimeoutlen=0
+autocmd BufEnter * set mouse=
 let loaded_matchparen = 1
 let mapleader = ","
 noremap <leader><TAB> :bnext<CR>
