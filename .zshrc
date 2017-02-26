@@ -18,9 +18,12 @@ if ! zgen saved; then
   zgen prezto terminal
   zgen prezto command-not-found
   zgen prezto syntax-highlighting
-  zgen prezto prompt theme 'steeef'
+  zgen load mafredri/zsh-async
+  zgen load sindresorhus/pure
   zgen save
 fi
+
+prompt pure
 
 alias vi="vim"
 alias vim="nvim"
