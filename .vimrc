@@ -74,6 +74,7 @@ if exists( '*vundle#rc' )
   Plugin 'editorconfig/editorconfig-vim'
   Plugin 'shougo/neocomplcache.vim'
   "Plugin 'ahw/vim-hooks.git'
+  Plugin 'tpope/vim-fugitive'
 
 endif
 
