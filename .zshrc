@@ -36,8 +36,8 @@ alias gfixed="ghi comment --close -m fixed"
 alias gdone="ghi comment --close -m done"
 
 export EDITOR="vi"
-export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export PATH="/usr/local/opt/android-sdk/platform-tools:$PATH"
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
 export PATH="$HOME/.yarn/bin:$PATH"
