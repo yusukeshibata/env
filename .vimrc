@@ -57,7 +57,8 @@ if exists( '*vundle#rc' )
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
   " show git-diff marker
-  Plugin 'airblade/vim-gitgutter'
+  Plugin 'mhinz/vim-signify'
+  Plugin 'Elive/vim-colorscheme-elive'
   Plugin 'Shougo/unite.vim'
   Plugin 'ujihisa/unite-colorscheme'
   Plugin 'tpope/vim-abolish'
@@ -139,4 +140,4 @@ let g:vimhooks_async = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_fenced_languages = ['javascript=js']
 
-"colorscheme deepsea
+silent! colorscheme elive
