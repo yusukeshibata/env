@@ -56,16 +56,14 @@ if exists( '*vundle#rc' )
   Plugin 'gmarik/vundle'
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
-  "Plugin 'airblade/vim-gitgutter'
-  "Plugin 'mhinz/vim-signify'
-  "Plugin 'jmcantrell/vim-virtualenv'
+  " show git-diff marker
+  Plugin 'airblade/vim-gitgutter'
   Plugin 'Shougo/unite.vim'
   Plugin 'ujihisa/unite-colorscheme'
   Plugin 'tpope/vim-abolish'
   Plugin 'groenewege/vim-less'
   Plugin 'pangloss/vim-javascript'
   Plugin 'mxw/vim-jsx'
-  "Plugin 'godlygeek/tabular'
   Plugin 'plasticboy/vim-markdown'
   Plugin 'digitaltoad/vim-pug'
   Plugin 'elzr/vim-json'
@@ -73,7 +71,6 @@ if exists( '*vundle#rc' )
   Plugin 'othree/eregex.vim'
   Plugin 'editorconfig/editorconfig-vim'
   Plugin 'shougo/neocomplcache.vim'
-  "Plugin 'ahw/vim-hooks.git'
   Plugin 'tpope/vim-fugitive'
 
 endif
@@ -142,4 +139,4 @@ let g:vimhooks_async = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_fenced_languages = ['javascript=js']
 
-colorscheme deepsea
+"colorscheme deepsea
