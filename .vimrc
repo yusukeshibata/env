@@ -45,18 +45,24 @@ nnoremap <ESC><ESC> :noh<CR>
 
 """
 
-set runtimepath+=$HOME/.vim/bundle/vundle/
+filetype off
+let s:path = substitute($HOME . '/.vim/bundle/vundle', '/', has('win32' ) ? '\\' : '/', 'g')
+execute 'set runtimepath+=' . s:path
+
 runtime autoload/vundle.vim
 
-if exists( '*vundle#rc' )
+let g:plugininit = 0
+if ! exists('*vundle#rc')
+  echo 'Installing plugins...'
+  silent! execute '! git clone https://github.com/gmarik/vundle.git' s:path
+  let g:plugininit = 1
+endif
 
-  filetype off
+"if exists('*vundle#rc')
   call vundle#rc()
-
   Plugin 'gmarik/vundle'
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
-  " show git-diff marker
   Plugin 'mhinz/vim-signify'
   Plugin 'Elive/vim-colorscheme-elive'
   Plugin 'Shougo/unite.vim'
@@ -73,38 +79,10 @@ if exists( '*vundle#rc' )
   Plugin 'editorconfig/editorconfig-vim'
   Plugin 'shougo/neocomplcache.vim'
   Plugin 'tpope/vim-fugitive'
-
-endif
-
-command  InstallVundle
-\ if ! InstallVundle()                                                            |
-\   echohl ErrorMsg                                                               |
-\   echomsg 'Failed to install Vundle automatically. Please install it yourself.' |
-\   echohl None                                                                   |
-\ endif
-function InstallVundle()
-  let vundle_repo = 'https://github.com/gmarik/vundle.git'
-  let path = substitute( $HOME . '/.vim/bundle/vundle', '/', has( 'win32' ) ? '\\' : '/', 'g' )
-  if ! executable( 'git' )
-    echohl ErrorMsg | echomsg 'Git is not available.' | echohl None | return 0
+  if g:plugininit
+    silent! PluginInstall
   endif
-  if isdirectory( path )
-    return 1
-  endif
-  if ! isdirectory( path )
-    silent! if ! mkdir( path, 'p' )
-      echohl ErrorMsg | echomsg 'Cannot create directory (may be a regular file): ' . path | echohl None | return 0
-    endif
-  endif
-  echo 'Cloning vundle...'
-  if system( 'git clone "' . vundle_repo . '" "' . path . '"'  ) =~ 'fatal'
-    echohl ErrorMsg | echomsg 'Cannot clone ' . vundle_repo . ' (' . path . ' may be not empty)' | echohl None | return 0
-  endif
-  echo 'Vundle installed. Please restart vim and run :PluginInstall'
-  PluginInstall
-  return 1
-endfunction
-InstallVundle
+"endif
 
 filetype plugin indent on
 
