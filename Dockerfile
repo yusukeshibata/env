@@ -52,46 +52,18 @@ USER shibata
 ADD .ssh/id_rsa .ssh/id_rsa
 ADD .ssh/id_rsa.pub .ssh/authorized_keys
 ADD .ssh/config .ssh/config
-ADD .vimrc .vimrc
-ADD .zshrc .zshrc
-ADD .tmux.conf .tmux.conf
 USER root
 RUN chmod 600 -R .ssh/*
 RUN chmod 700 .ssh
 RUN chown shibata:shibata -R .
 
+USER shibata
+RUN curl -sL https://raw.github.com/yusukeshibata/env/master/init.sh | sh
+
 # time
 USER root
 RUN echo 'US/Pacific-New' > /etc/timezone
 # RUN ntpdate pool.ntp.org
-
-# git-flow
-USER root
-RUN curl -OL https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh
-RUN sh gitflow-installer.sh && rm -rf gitflow gitflow-installer.sh
-
-# linuxbrew
-USER shibata
-RUN ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
-
-# yarn
-USER root
-RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update -y
-RUN apt-get install -y yarn
-
-# node
-USER shibata
-RUN curl -L git.io/nodebrew | perl - setup
-RUN .nodebrew/current/bin/nodebrew install-binary v5.12.0
-RUN .nodebrew/current/bin/nodebrew use v5.12.0
-
-# mongodb
-USER root
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
-RUN echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
-RUN apt-get update -y
-RUN apt-get install -y mongodb-org
 
 # ssh
 USER root

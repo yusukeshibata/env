@@ -63,6 +63,7 @@ install() {
 
 # brew
 check brew || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# check brew || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 
 # others
 install nodebrew
