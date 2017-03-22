@@ -1,6 +1,4 @@
-if [[ ! -d ~/.zgen ]]; then
-  git clone https://github.com/tarjoilija/zgen.git .zgen
-fi
+[[ ! -d ~/.zgen ]] && git clone https://github.com/tarjoilija/zgen.git .zgen
 source "${HOME}/.zgen/zgen.zsh"
 if ! zgen saved; then
   zgen prezto
@@ -26,7 +24,7 @@ fi
 prompt pure
 
 alias vi="vim"
-#alias vim="nvim"
+alias vim="nvim"
 alias a="tmux attach -d -t"
 alias new="tmux new -s"
 alias feature="git flow feature"
@@ -46,7 +44,28 @@ export PATH="$HOME/.linuxbrew/bin:$PATH"
 bindkey -e
 export LANG=en_US.UTF-8
 
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-  eval `ssh-agent -s`
-fi
+[ -z "$SSH_AUTH_SOCK" ] && eval `ssh-agent -s`
 ssh-add "$HOME/.ssh/id_rsa" > /dev/null 2>&1
+
+# install
+
+check() {
+  command -v $1 >/dev/null 2>&1
+}
+_install() {
+  echo "-> Installing $2..."
+  HOMEBREW_NO_AUTO_UPDATE=1 brew install $1
+}
+install() {
+  [[ -z $2 ]] && c="$1" || c="$2"
+  check $1 || _install $c $1
+}
+
+# brew
+check brew || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# others
+install nodebrew
+install nvim neovim/neovim/neovim
+install git-flow
+install tmux
