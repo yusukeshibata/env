@@ -58,7 +58,7 @@ _install() {
 }
 install() {
   [[ -z $2 ]] && c="$1" || c="$2"
-  check $1 || _install $c $1
+  check brew && check $1 || _install $c $1
 }
 
 # brew
