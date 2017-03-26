@@ -52,39 +52,29 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'gmarik/vundle'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-signify'
 Plug 'Elive/vim-colorscheme-elive'
 Plug 'Shougo/unite.vim'
-Plug 'ujihisa/unite-colorscheme'
 Plug 'tpope/vim-abolish'
 Plug 'groenewege/vim-less'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'plasticboy/vim-markdown'
-Plug 'digitaltoad/vim-pug'
 Plug 'elzr/vim-json'
-Plug 'flazz/vim-colorschemes'
 Plug 'othree/eregex.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'shougo/neocomplcache.vim'
+Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-fugitive'
 call plug#end()
-
-"""
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='dark'
 
 " unite
 nnoremap <silent> ;; :<C-u>Unite buffer -direction=botright -auto-resize -toggle<CR>
 
 "
-nnoremap <leader>/ :call eregex#toggle()<CR>
 set diffopt+=vertical
 
 let g:jsx_ext_required = 0
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 silent! colorscheme elive
