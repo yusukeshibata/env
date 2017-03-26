@@ -1,9 +1,0 @@
-[user]
-  email = shibata@fata.io
-  name = Yusuke Shibata
-[core]
-	editor = /usr/local/bin/nvim
-[github]
-	user = yusukeshibata
-[ghi]
-	token = !security find-internet-password -a yusukeshibata -s github.com -l 'ghi token' -w

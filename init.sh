@@ -1,10 +1,12 @@
 #!/bin/sh
 
-[ -d "$HOME/.git" ] && echo '-> Already initialized.' && exit 0
+[ -d "$HOME/env/.git" ] && echo '-> Already initialized.' && exit 0
 
 echo '-> Initializing...'
-tmpdir=$(mktemp -d)
-git clone https://github.com/yusukeshibata/env.git $tmpdir >/dev/null 2>&1
-cp -r $tmpdir/. $HOME
-rm -rf $tmpdir
+
+git clone https://github.com/yusukeshibata/env.git $HOME/env >/dev/null 2>&1
+find $HOME/env -type f -name '.*' -exec ln -Fvs $HOME/env/{} $HOME \;
+mkdir -p $HOME/.config/nvim
+ln -Fs $HOME/env/.vimrc $HOME/.config/nvim/init.vim
+
 echo '-> Done.'
