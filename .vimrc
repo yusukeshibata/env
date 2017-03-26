@@ -45,46 +45,33 @@ nnoremap <ESC><ESC> :noh<CR>
 
 """
 
-filetype off
-let s:path = substitute($HOME . '/.vim/bundle/vundle', '/', has('win32' ) ? '\\' : '/', 'g')
-execute 'set runtimepath+=' . s:path
-
-runtime autoload/vundle.vim
-
-let g:plugininit = 0
-if ! exists('*vundle#rc')
-  echo 'Installing plugins...'
-  silent! execute '! git clone https://github.com/gmarik/vundle.git' s:path
-  let g:plugininit = 1
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-"if exists('*vundle#rc')
-  call vundle#rc()
-  Plugin 'gmarik/vundle'
-  Plugin 'vim-airline/vim-airline'
-  Plugin 'vim-airline/vim-airline-themes'
-  Plugin 'mhinz/vim-signify'
-  Plugin 'Elive/vim-colorscheme-elive'
-  Plugin 'Shougo/unite.vim'
-  Plugin 'ujihisa/unite-colorscheme'
-  Plugin 'tpope/vim-abolish'
-  Plugin 'groenewege/vim-less'
-  Plugin 'pangloss/vim-javascript'
-  Plugin 'mxw/vim-jsx'
-  Plugin 'plasticboy/vim-markdown'
-  Plugin 'digitaltoad/vim-pug'
-  Plugin 'elzr/vim-json'
-  Plugin 'flazz/vim-colorschemes'
-  Plugin 'othree/eregex.vim'
-  Plugin 'editorconfig/editorconfig-vim'
-  Plugin 'shougo/neocomplcache.vim'
-  Plugin 'tpope/vim-fugitive'
-  if g:plugininit
-    silent! PluginInstall
-  endif
-"endif
-
-filetype plugin indent on
+call plug#begin('~/.vim/plugged')
+Plug 'gmarik/vundle'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mhinz/vim-signify'
+Plug 'Elive/vim-colorscheme-elive'
+Plug 'Shougo/unite.vim'
+Plug 'ujihisa/unite-colorscheme'
+Plug 'tpope/vim-abolish'
+Plug 'groenewege/vim-less'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'plasticboy/vim-markdown'
+Plug 'digitaltoad/vim-pug'
+Plug 'elzr/vim-json'
+Plug 'flazz/vim-colorschemes'
+Plug 'othree/eregex.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'shougo/neocomplcache.vim'
+Plug 'tpope/vim-fugitive'
+call plug#end()
 
 """
 
@@ -94,28 +81,10 @@ let g:airline_theme='dark'
 " unite
 nnoremap <silent> ;; :<C-u>Unite buffer -direction=botright -auto-resize -toggle<CR>
 
-" hidden chars
-" set list
-" set listchars=tab:^\ ,trail:~
-
 "
 nnoremap <leader>/ :call eregex#toggle()<CR>
 set diffopt+=vertical
 
-let g:neocomplcache_enable_at_startup = 1
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplcache#smart_close_popup() . "\<CR>"
-endfunction
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
-
 let g:jsx_ext_required = 0
-let g:vimhooks_async = 1
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_fenced_languages = ['javascript=js']
 
 silent! colorscheme elive
