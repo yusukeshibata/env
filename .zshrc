@@ -71,3 +71,5 @@ install nodebrew
 install nvim neovim/neovim/neovim
 install git-flow
 install tmux
+
+export GPG_TTY=$(tty)
