@@ -32,6 +32,7 @@ alias hotfix="git flow hotfix"
 alias release="git flow release"
 alias gfixed="ghi comment --close -m fixed"
 alias gdone="ghi comment --close -m done"
+alias gcm="git commit -a -S -m"
 
 export EDITOR="vi"
 export PATH="/usr/local/opt/android-sdk/platform-tools:$PATH"
