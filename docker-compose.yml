@@ -3,7 +3,10 @@ dev:
   build: .
   privileged: true
   ports:
-    - "9000:9000"
+    - "8080:8080"
+    - "8000:8000"
+    - "8081:8081"
+    - "30000:30000"
     - "2222:22"
   volumes:
     - ./proj:/home/shibata/proj

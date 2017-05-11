@@ -1,3 +1,7 @@
+#
+# Base
+#
+
 FROM ubuntu:14.04
 
 # package
@@ -17,7 +21,6 @@ RUN apt-get install -y \
   python-dev python-pip python3-dev python3-pip \
   python3-setuptools \
   neovim \
-  imagemagick \
   tmux=2.0-1~ppa1~t
 
 RUN locale-gen en_US.UTF-8
@@ -48,14 +51,14 @@ WORKDIR /home/shibata
 ENV HOME /home/shibata
 
 # env
-USER shibata
+USER root
 ADD .ssh/id_rsa .ssh/id_rsa
 ADD .ssh/id_rsa.pub .ssh/authorized_keys
 ADD .ssh/config .ssh/config
+
 USER root
-RUN chmod 600 -R .ssh/*
-RUN chmod 700 .ssh
-RUN chown shibata:shibata -R .
+RUN chown -R shibata:shibata .ssh
+RUN chmod go-rw -R .ssh
 
 USER shibata
 RUN curl -sL https://raw.github.com/yusukeshibata/env/master/init.sh | sh
@@ -64,6 +67,27 @@ RUN curl -sL https://raw.github.com/yusukeshibata/env/master/init.sh | sh
 USER root
 RUN echo 'US/Pacific-New' > /etc/timezone
 # RUN ntpdate pool.ntp.org
+
+# git-flow
+USER root
+RUN curl -OL https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh
+RUN sh gitflow-installer.sh
+
+# linuxbrew
+USER shibata
+RUN ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+
+# yarn
+USER root
+RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update -y
+RUN apt-get install -y yarn --force-yes
+
+# node
+USER shibata
+RUN curl -L git.io/nodebrew | perl - setup
+RUN .nodebrew/current/bin/nodebrew install-binary stable
+RUN .nodebrew/current/bin/nodebrew use stable
 
 # ssh
 USER root
