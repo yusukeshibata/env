@@ -32,12 +32,12 @@ alias hotfix="git flow hotfix"
 alias release="git flow release"
 alias gfixed="ghi comment --close -m fixed"
 alias gdone="ghi comment --close -m done"
-alias gcm="git commit -a -S -m"
+alias gcm="git commit -S -m"
 
 export EDITOR="vi"
-export PATH="/usr/local/opt/android-sdk/platform-tools:$PATH"
 export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-export ANDROID_HOME=/usr/local/opt/android-sdk
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
 
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH=$HOME/.nodebrew/current/bin:$PATH
