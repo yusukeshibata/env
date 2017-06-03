@@ -66,6 +66,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-fugitive'
 Plug 'kentaroi/cocoa.vim'
+Plug 'tpope/vim-jdaddy'
 call plug#end()
 
 " unite

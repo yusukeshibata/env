@@ -73,10 +73,6 @@ USER root
 RUN curl -OL https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh
 RUN sh gitflow-installer.sh
 
-# linuxbrew
-USER shibata
-RUN ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
-
 # yarn
 USER root
 RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
