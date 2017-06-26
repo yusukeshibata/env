@@ -67,6 +67,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-fugitive'
 Plug 'kentaroi/cocoa.vim'
 Plug 'tpope/vim-jdaddy'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 " unite
@@ -80,3 +81,6 @@ let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 silent! colorscheme elive
+
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_fenced_languages = ['js=javascript']
