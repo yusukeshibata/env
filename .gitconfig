@@ -1,0 +1,7 @@
+[user]
+	email = shibata@fata.io
+	name = Yusuke Shibata
+	signingkey = 9DD35E78DBB2B54EF56695CAB6DE4DD3CEC87842
+[core]
+	editor = vim
+	pager = less -x1,3
