@@ -73,5 +73,3 @@ install git-flow
 install tmux
 install python
 install python3
-
-export GPG_TTY=$(tty)
