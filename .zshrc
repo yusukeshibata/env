@@ -30,9 +30,6 @@ alias new="tmux new -s"
 alias feature="git flow feature"
 alias hotfix="git flow hotfix"
 alias release="git flow release"
-alias gfixed="ghi comment --close -m fixed"
-alias gdone="ghi comment --close -m done"
-alias gcm="git commit -S -m"
 
 export EDITOR="vi"
 export ANDROID_HOME=~/Library/Android/sdk
