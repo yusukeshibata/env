@@ -34,10 +34,9 @@ alias release="git flow release"
 export EDITOR="vi"
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
-export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="$HOME/bin:$HOME/go/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$PATH"
-export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 bindkey -e
 export LANG=en_US.UTF-8
@@ -64,7 +63,7 @@ check brew || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/i
 # check brew || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 
 # others
-install nodebrew
+install n
 install nvim neovim/neovim/neovim
 install git-flow
 install tmux
