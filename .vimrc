@@ -57,7 +57,6 @@ Plug 'mhinz/vim-signify'
 Plug 'Elive/vim-colorscheme-elive'
 Plug 'Shougo/unite.vim'
 Plug 'tpope/vim-abolish'
-Plug 'groenewege/vim-less'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
@@ -65,9 +64,9 @@ Plug 'othree/eregex.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-fugitive'
-Plug 'kentaroi/cocoa.vim'
 Plug 'tpope/vim-jdaddy'
 Plug 'plasticboy/vim-markdown'
+Plug 'styled-components/vim-styled-components'
 call plug#end()
 
 " unite
@@ -87,3 +86,10 @@ let g:vim_markdown_fenced_languages = ['js=javascript']
 
 " set listchars=tab:▹␣
 " set list
+let loaded_matchparen=1 " Don't load matchit.vim (paren/bracket matching)
+set noshowmatch         " Don't match parentheses/brackets
+set nocursorline        " Don't paint cursor line
+set nocursorcolumn      " Don't paint cursor column
+set lazyredraw          " Wait to redraw
+set scrolljump=8        " Scroll 8 lines at a time at bottom/top
+let html_no_rendering=1 " Don't render italic, bold, links in HTML
