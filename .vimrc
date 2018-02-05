@@ -67,6 +67,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-jdaddy'
 Plug 'plasticboy/vim-markdown'
 Plug 'styled-components/vim-styled-components'
+Plug 'vim-scripts/a.vim'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 " unite
@@ -84,8 +86,8 @@ silent! colorscheme elive
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_fenced_languages = ['js=javascript']
 
-" set listchars=tab:▹␣
-" set list
+set listchars=tab:▹␣
+set list
 let loaded_matchparen=1 " Don't load matchit.vim (paren/bracket matching)
 set noshowmatch         " Don't match parentheses/brackets
 set nocursorline        " Don't paint cursor line
@@ -93,3 +95,14 @@ set nocursorcolumn      " Don't paint cursor column
 set lazyredraw          " Wait to redraw
 set scrolljump=8        " Scroll 8 lines at a time at bottom/top
 let html_no_rendering=1 " Don't render italic, bold, links in HTML
+
+set exrc
+set secure
+
+let g:ycm_show_diagnostics_ui = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_cpp_check_header = 0
