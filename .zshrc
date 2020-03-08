@@ -1,71 +1,78 @@
-[[ ! -d ~/.zgen ]] && git clone https://github.com/tarjoilija/zgen.git .zgen
-source "${HOME}/.zgen/zgen.zsh"
-if ! zgen saved; then
-  zgen prezto
-  zgen prezto git
-  zgen prezto environment
-  zgen prezto tmux
-  zgen prezto ssh
-  zgen prezto utility
-  zgen prezto spectrum
-  zgen prezto helper
-  zgen prezto fasd
-  zgen prezto directory
-  zgen prezto completion
-  zgen prezto history
-  zgen prezto terminal
-  zgen prezto command-not-found
-  zgen prezto syntax-highlighting
-  zgen load mafredri/zsh-async
-  zgen load sindresorhus/pure
-  zgen save
+# Check if zplug is installed
+if [[ ! -d ~/.zplug ]]; then
+  git clone https://github.com/zplug/zplug ~/.zplug
+  source ~/.zplug/init.zsh && zplug update --self
+fi
+source ~/.zplug/init.zsh
+
+zplug modules/git, from:prezto
+zplug modules/environment, from:prezto
+zplug modules/tmux, from:prezto
+zplug modules/ssh, from:prezto
+zplug modules/utility, from:prezto
+zplug modules/spectrum, from:prezto
+zplug modules/helper, from:prezto
+zplug modules/directory, from:prezto
+zplug modules/completion, from:prezto
+zplug modules/history, from:prezto
+zplug modules/terminal, from:prezto
+zplug modules/command-not-found, from:prezto
+zplug modules/syntax-highlighting, from:prezto
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+zplug plugins/ssh-agent,   from:oh-my-zsh
+zplug plugins/npx,   from:oh-my-zsh
+
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  else
+    echo
+  fi
 fi
 
-prompt pure
+zplug load
+
+bindkey -e
+export LANG=en_US.UTF-8
+export EDITOR="vi"
 
 alias vi="vim"
-alias vim="nvim"
 alias a="tmux attach -d -t"
 alias new="tmux new -s"
 alias feature="git flow feature"
 alias hotfix="git flow hotfix"
 alias release="git flow release"
 
-export EDITOR="vi"
-export ANDROID_HOME=~/Library/Android/sdk
-export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
-export PATH="$HOME/bin:$HOME/go/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
-export PATH="$HOME/.yarn/bin:$PATH"
-export PATH="$HOME/.linuxbrew/bin:$PATH"
-bindkey -e
-export LANG=en_US.UTF-8
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
-[ -z "$SSH_AUTH_SOCK" ] && eval `ssh-agent -s`
-ssh-add "$HOME/.ssh/id_rsa" > /dev/null 2>&1
+export ANDROID_HOME=$HOME/Library/Android
+export ANDROID_SDK_ROOT=$ANDROID_HOME/sdk
+export NDK_ROOT=$HOME/Library/Android/sdk/ndk-bundle
+export ANT_ROOT=/usr/local/opt/ant/bin
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
-# install
+source $HOME/proj/emsdk/emsdk_env.sh --build=Release >> /dev/null 2>&1
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export PATH="$HOME/platform-tools:$PATH"
 
-check() {
-  command -v $1 >/dev/null 2>&1
-}
-_install() {
-  echo "-> Installing $2..."
-  HOMEBREW_NO_AUTO_UPDATE=1 brew install $1
-}
-install() {
-  [[ -z $2 ]] && c="$1" || c="$2"
-  check brew && check $1 || _install $c $1
-}
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# brew
-check brew || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# check brew || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+# eval "$(starship init zsh)"
+export GPG_TTY=$(tty)
 
-# others
-install n
-install nvim neovim/neovim/neovim
-install git-flow
-install tmux
-install python
-install python3
+# rbenv
+eval "$(rbenv init -)"
+
+# nvim
+alias vi="nvim"
+alias vim="nvim"

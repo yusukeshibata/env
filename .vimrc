@@ -1,11 +1,14 @@
 filetype off
-set nocompatible
+syntax on
 
+"
+set termguicolors
+set background=dark
+set nocompatible
 set backspace=start,eol,indent
 set whichwrap=b,s,[,],,~
 set incsearch
 set wildmenu wildmode=list:full
-syntax on
 set hlsearch
 set cursorline
 set modeline
@@ -14,8 +17,6 @@ set number
 set laststatus=2
 set t_Co=256
 set runtimepath+=~/.vim/
-runtime! userautoload/*.vim
-
 set scrolloff=5
 set noswapfile
 set nowritebackup
@@ -33,17 +34,31 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set backspace=indent,eol,start
-"set clipboard=unnamed
+set clipboard=unnamed
 set ttimeout
 set ttimeoutlen=0
+set listchars=tab:▹␣
+set list
+set lazyredraw          " Wait to redraw
+set scrolljump=8        " Scroll 8 lines at a time at bottom/top
+set noshowmatch         " Don't match parentheses/brackets
+set nocursorline        " Don't paint cursor line
+set nocursorcolumn      " Don't paint cursor column
+set exrc
+set secure
+set autoread
+set diffopt+=vertical
+
+"
+runtime! userautoload/*.vim
 autocmd BufEnter * set mouse=
-let loaded_matchparen = 1
-let mapleader = ","
 noremap <leader><TAB> :bnext<CR>
 noremap <leader><S-TAB> :bprev<CR>
 nnoremap <ESC><ESC> :noh<CR>
 
-"""
+"
+" Plugin
+"
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -52,57 +67,62 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'vim-airline/vim-airline'
-Plug 'mhinz/vim-signify'
-Plug 'Elive/vim-colorscheme-elive'
+
+" styling
+Plug 'altercation/vim-colors-solarized'
+Plug 'itchyny/lightline.vim'
+" ;; toggle files
 Plug 'Shougo/unite.vim'
+" Subvert
 Plug 'tpope/vim-abolish'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'elzr/vim-json'
+" regex
 Plug 'othree/eregex.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'Valloric/YouCompleteMe'
+" gdiff
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-jdaddy'
-Plug 'plasticboy/vim-markdown'
-Plug 'styled-components/vim-styled-components'
-Plug 'vim-scripts/a.vim'
-Plug 'vim-syntastic/syntastic'
+" editorconfig
+Plug 'editorconfig/editorconfig-vim'
+" autocompletion
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" git diff
+Plug 'airblade/vim-gitgutter'
+" typescript
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" nerdtree
+Plug 'scrooloose/nerdtree'
+
 call plug#end()
+
+"
+" Plugin setting
+"
 
 " unite
 nnoremap <silent> ;; :<C-u>Unite buffer -direction=botright -auto-resize -toggle<CR>
-
-"
-set diffopt+=vertical
-
-let g:jsx_ext_required = 0
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
-
-silent! colorscheme elive
-
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_fenced_languages = ['js=javascript']
-
-set listchars=tab:▹␣
-set list
-let loaded_matchparen=1 " Don't load matchit.vim (paren/bracket matching)
-set noshowmatch         " Don't match parentheses/brackets
-set nocursorline        " Don't paint cursor line
-set nocursorcolumn      " Don't paint cursor column
-set lazyredraw          " Wait to redraw
-set scrolljump=8        " Scroll 8 lines at a time at bottom/top
-let html_no_rendering=1 " Don't render italic, bold, links in HTML
-
-set exrc
-set secure
-
-let g:ycm_show_diagnostics_ui = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_cpp_check_header = 0
+" colorscheme
+colorscheme solarized
+hi LineNr guifg=grey
+hi Comment guifg=gray
+hi Pmenu guibg=gray
+hi Statement gui=NONE guifg=yellow
+" peitalin/vim-jsx-typescript
+hi tsxTagName guifg=#E06C75
+hi tsxCloseString guifg=#F99575
+hi tsxCloseTag guifg=#F99575
+hi tsxCloseTagName guifg=#F99575
+hi tsxAttributeBraces guifg=#F99575
+hi tsxEqual guifg=#F99575
+hi tsxAttrib guifg=#F8BD7F cterm=italic
+hi ReactState guifg=#C176A7
+hi ReactProps guifg=#D19A66
+hi ApolloGraphQL guifg=#CB886B
+hi Events ctermfg=204 guifg=#56B6C2
+hi ReduxKeywords ctermfg=204 guifg=#C678DD
+hi ReduxHooksKeywords ctermfg=204 guifg=#C176A7
+hi WebBrowser ctermfg=204 guifg=#56B6C2
+hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
+" vim-jsx-typescript
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+" nerdtree
+map <C-a> :NERDTreeToggle %<CR>

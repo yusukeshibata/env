@@ -1,12 +1,10 @@
-dev:
-  restart: always
-  build: .
-  privileged: true
-  ports:
-    - "8080:8080"
-    - "8000:8000"
-    - "8081:8081"
-    - "30000:30000"
-    - "2222:22"
-  volumes:
-    - ./proj:/home/shibata/proj
+version: '3'
+services:
+  dev:
+    restart: always
+    build: .
+    privileged: true
+    ports:
+      - "22:22"
+      - "1234:1234"
+      - "45571:45571"
