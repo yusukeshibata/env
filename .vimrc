@@ -82,7 +82,7 @@ Plug 'tpope/vim-fugitive'
 " editorconfig
 Plug 'editorconfig/editorconfig-vim'
 " autocompletion
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 " git diff
 Plug 'airblade/vim-gitgutter'
 " typescript
@@ -106,6 +106,7 @@ hi LineNr guifg=grey
 hi Comment guifg=gray
 hi Pmenu guibg=gray
 hi Statement gui=NONE guifg=yellow
+hi Todo cterm=bold ctermfg=5 guifg=Blue guibg=Red
 " peitalin/vim-jsx-typescript
 hi tsxTagName guifg=#E06C75
 hi tsxCloseString guifg=#F99575
@@ -126,3 +127,14 @@ hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 " nerdtree
 map <C-a> :NERDTreeToggle %<CR>
+
+""" coc.nvim
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
