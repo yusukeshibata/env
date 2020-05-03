@@ -1,7 +1,9 @@
 [user]
-	email = shibata@fata.io
+	email = yusukeshib@gmail.com
 	name = Yusuke Shibata
-	signingkey = 9DD35E78DBB2B54EF56695CAB6DE4DD3CEC87842
+	signingkey = DE78789F9B28DC95C1A99481E0C042B0A1F17C2A
 [core]
 	editor = vim
 	pager = less -x1,3
+[commit]
+	gpgsign = true
