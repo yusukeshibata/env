@@ -5,7 +5,6 @@ syntax on
 set termguicolors
 set background=dark
 set nocompatible
-set backspace=start,eol,indent
 set whichwrap=b,s,[,],,~
 set incsearch
 set wildmenu wildmode=list:full
@@ -37,7 +36,7 @@ set backspace=indent,eol,start
 set clipboard=unnamed
 set ttimeout
 set ttimeoutlen=0
-set listchars=tab:▹␣
+"set listchars=tab:▹␣
 set list
 set lazyredraw          " Wait to redraw
 set scrolljump=8        " Scroll 8 lines at a time at bottom/top
@@ -105,6 +104,7 @@ colorscheme solarized
 hi LineNr guifg=grey
 hi Comment guifg=gray
 hi Pmenu guibg=gray
+hi NonText guifg=gray10
 hi Statement gui=NONE guifg=yellow
 hi Todo cterm=bold ctermfg=5 guifg=Blue guibg=Red
 " peitalin/vim-jsx-typescript
