@@ -40,7 +40,6 @@ bindkey -e
 export LANG=en_US.UTF-8
 export EDITOR="vi"
 
-alias vi="vim"
 alias a="tmux attach -d -t"
 alias new="tmux new -s"
 alias feature="git flow feature"
