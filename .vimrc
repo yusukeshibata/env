@@ -9,7 +9,6 @@ set whichwrap=b,s,[,],,~
 set incsearch
 set wildmenu wildmode=list:full
 set hlsearch
-set cursorline
 set modeline
 set shiftwidth=2
 set number
@@ -47,6 +46,8 @@ set exrc
 set secure
 set autoread
 set diffopt+=vertical
+set guifont=Menlo-Regular:h14
+set mouse=a
 
 "
 runtime! userautoload/*.vim
@@ -68,7 +69,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " styling
-Plug 'altercation/vim-colors-solarized'
 Plug 'itchyny/lightline.vim'
 " ;; toggle files
 Plug 'Shougo/unite.vim'
@@ -80,8 +80,6 @@ Plug 'othree/eregex.vim'
 Plug 'tpope/vim-fugitive'
 " editorconfig
 Plug 'editorconfig/editorconfig-vim'
-" autocompletion
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 " git diff
 Plug 'airblade/vim-gitgutter'
 " typescript
@@ -90,6 +88,11 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " nerdtree
 Plug 'scrooloose/nerdtree'
+" glsl
+Plug 'tikhomirov/vim-glsl'
+" rust
+Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
 
 call plug#end()
 
@@ -99,8 +102,6 @@ call plug#end()
 
 " unite
 nnoremap <silent> ;; :<C-u>Unite buffer -direction=botright -auto-resize -toggle<CR>
-" colorscheme
-colorscheme solarized
 hi LineNr guifg=grey
 hi Comment guifg=gray
 hi Pmenu guibg=gray
@@ -123,23 +124,24 @@ hi ReduxKeywords ctermfg=204 guifg=#C678DD
 hi ReduxHooksKeywords ctermfg=204 guifg=#C176A7
 hi WebBrowser ctermfg=204 guifg=#56B6C2
 hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
+
 " vim-jsx-typescript
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
 " nerdtree
 map <C-a> :NERDTreeToggle %<CR>
+nmap <silent> <leader>a <Plug>(coc-diagnostic-next-error)
+nmap <silent> <leader>A <Plug>(coc-diagnostic-next)
+let NERDTreeQuitOnOpen=1
+
+" glsl
+autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
 
 """ coc.nvim
 
 " Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-"
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
