@@ -60,6 +60,9 @@ nnoremap <ESC><ESC> :noh<CR>
 " Plugin
 "
 
+let g:coc_global_extensions = ['coc-tsserver', 'coc-prettier', 'coc-eslint']
+
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
