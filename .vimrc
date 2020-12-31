@@ -96,6 +96,8 @@ Plug 'tikhomirov/vim-glsl'
 " rust
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
+" fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 call plug#end()
 
@@ -148,3 +150,5 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+nnoremap <C-p> :FZF<Cr>
