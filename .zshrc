@@ -23,6 +23,7 @@ bindkey -e
 export LANG=en_US.UTF-8
 export EDITOR="vi"
 
+alias ls="exa"
 alias a="tmux attach -d -t"
 alias new="tmux new -s"
 alias feature="git flow feature"
@@ -40,15 +41,13 @@ export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0
 export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH=$HOME/.nodebrew/current/bin:$PATH
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-export PATH="$HOME/platform-tools:$PATH"
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='fdfind --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # eval "$(pyenv init -)"
 # eval "$(rbenv init -)"
 # source $HOME/.cargo/env
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# Setting fd as the default source for fzf
-export FZF_DEFAULT_COMMAND='fdfind --type f'
-# To apply the command to CTRL-T as well
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
