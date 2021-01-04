@@ -1,30 +1,23 @@
-# Check if zplug is installed
-if [[ ! -d ~/.zplug ]]; then
-  git clone https://github.com/zplug/zplug ~/.zplug
-  source ~/.zplug/init.zsh && zplug update --self
+# zgen
+if [[ ! -d ~/.zgen ]]; then
+  git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 fi
-source ~/.zplug/init.zsh
-
-zplug modules/git, from:prezto
-zplug modules/ssh, from:prezto
-zplug modules/gpg, from:prezto
-zplug modules/utility, from:prezto
-zplug modules/history, from:prezto
-zplug mafredri/zsh-async, from:github
-zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
-zplug plugins/ssh-agent, from:oh-my-zsh
-zstyle :omz:plugins:ssh-agent agent-forwarding on
-
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  else
-    echo
-  fi
+source "${HOME}/.zgen/zgen.zsh"
+if ! zgen saved; then
+  zgen prezto
+  zgen prezto git
+  zgen prezto ssh
+  zgen prezto gpg
+  zgen prezto utility
+  zgen prezto history
+  zgen oh-my-zsh plugins/ssh-agent
+  zstyle :omz:plugins:ssh-agent agent-forwarding on
+  zgen load mafredri/zsh-async
+  zgen sindresorhus/pure
+  zgen save
 fi
 
-zplug load
+prompt pure
 
 bindkey -e
 export LANG=en_US.UTF-8
@@ -50,10 +43,9 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 export PATH="$HOME/platform-tools:$PATH"
 
-eval "$(pyenv init -)"
-eval "$(rbenv init -)"
-
-source $HOME/.cargo/env
+# eval "$(pyenv init -)"
+# eval "$(rbenv init -)"
+# source $HOME/.cargo/env
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Setting fd as the default source for fzf

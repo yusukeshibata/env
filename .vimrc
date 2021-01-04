@@ -48,6 +48,8 @@ set autoread
 set diffopt+=vertical
 set guifont=Menlo-Regular:h14
 set mouse=a
+set undodir=~/.undo
+set undofile
 
 "
 runtime! userautoload/*.vim
