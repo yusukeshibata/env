@@ -44,10 +44,10 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='fdfind --type f'
+export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-# eval "$(pyenv init -)"
+eval "$(pyenv init -)"
 # eval "$(rbenv init -)"
 # source $HOME/.cargo/env
 
